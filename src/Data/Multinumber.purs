@@ -16,6 +16,7 @@ module Data.Multinumber
   , fromFoldable
   , toList
   , fromList
+  , toArray
   , size
   , union
   , unions

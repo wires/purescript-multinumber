@@ -1,12 +1,21 @@
 module Test.Main where
 
-import Prelude ((+), (==))
+import Prelude (($))
 
-import Test.QuickCheck (quickCheck, (===))
+import Test.QuickCheck (quickCheck, (===), Result)
 
-import Control.Monad.Eff
-import Control.Monad.Eff.Random
-import Control.Monad.Eff.Console
+import Data.Multinumber (fromFoldable, toArray)
+import Data.Array (sort)
 
--- obviously no real tests yet
-main = do quickCheck \n -> n + 1 === 2 + n
+-- | for any array
+toFromId :: Array Int -> Result
+toFromId xs = sort (toArray $ fromFoldable xs) === sort xs
+
+-- import Control.Monad.Eff (Eff)
+-- import Control.Monad.Eff.Random (RANDOM)
+-- import Control.Monad.Eff.Console (CONSOLE)
+-- import Prelude (Unit)
+-- import Control.Monad.Eff.Exception (EXCEPTION)
+
+-- main :: forall e. Eff (con :: CONSOLE, rnd :: RANDOM, err :: EXCEPTION| e)
+main = do quickCheck toFromId
