@@ -22,5 +22,6 @@ There are two important ways to define multisets.
 
 - A **multinumber** is a collection `Y` which can contain the same element
  multiple times, so multiplicity is given by `Y -> nat`.
+ (which is what this library does)
 
 This implements the latter, it's based on `purescript-sets`.
